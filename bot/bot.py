@@ -1,6 +1,7 @@
 
 import os
 import sys
+import threading
 
 import discord
 import pyglet
@@ -19,6 +20,11 @@ def main():
     TOKEN = os.getenv('DISCORD_TOKEN')
 
     client = discord.Client()
+
+    from window import window
+    draw_thread = threading.Thread(target=lambda: window.run(None))
+    draw_thread.start()
+
 
     @client.event
     async def on_ready():
@@ -45,6 +51,7 @@ def main():
             print(f'Unrecognised command: {command}', file=sys.stderr)
             return
         else:
+            pyglet.clock.schedule_once(firework, 0)
             await message.add_reaction('🎇')
 
     client.run(TOKEN)
