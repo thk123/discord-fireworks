@@ -81,3 +81,6 @@ def fire(dt=None):
     Kaboom()
 
     pyglet.clock.schedule_once(fire, expovariate(1.0 / (MEAN_FIRE_INTERVAL - 1)) + 1)
+
+def fire_one(dt=None):
+    Kaboom()
