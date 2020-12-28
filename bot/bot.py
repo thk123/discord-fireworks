@@ -37,7 +37,8 @@ def main():
         if message.author == client.user:
             return
 
-        # We're only interested in messages in the #firepit channel
+        # We're only interested in messages in the #fireworks channels (allow for
+        # #fireworks-testing
         if 'fireworks' not in message.channel.name:
             return
 
