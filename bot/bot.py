@@ -50,7 +50,7 @@ def main():
         firework = firework_parsing.parse_firework(command)
         if firework is None:
             print(f'Unrecognised command: {command}', file=sys.stderr)
-            return
+            await message.add_reaction('❌')
         else:
             pyglet.clock.schedule_once(firework, 0)
             await message.add_reaction('🎇')
