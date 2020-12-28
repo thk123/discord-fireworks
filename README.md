@@ -26,8 +26,8 @@ The boilerplate code for running a GL application.
 
 ## TODO
 
- - [ ] Get the discord bot working
- - [ ] Queue fireworks for the window to execute
+ - [x] Get the discord bot working
+ - [x] Queue fireworks for the window to execute
  - [ ] Parsing a command to search the existing fireworks
  - [ ] Add more fireworks
  

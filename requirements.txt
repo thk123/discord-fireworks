@@ -1,2 +1,4 @@
 pyglet
 lepton
+discord.py
+python-dotenv
