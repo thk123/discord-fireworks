@@ -1,4 +1,4 @@
-from fireworks import basic_firework, text_firework
+from fireworks import basic_firework, text_firework, tracer
 
 
 def parse_firework(firework_command):
@@ -17,5 +17,7 @@ def parse_firework(firework_command):
         return lambda dt: basic_firework.fire_N(num_times, dt)
     elif bits[0] == 'text':
         return lambda dt: text_firework.fire(" ".join(bits[1:]))
+    elif bits[0] == 'tracer':
+        return tracer.run_tracer
     else:
         return None
