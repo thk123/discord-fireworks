@@ -42,11 +42,10 @@ def main():
         if 'fireworks' not in message.channel.name:
             return
 
-        if client.user not in message.mentions:
-            return
-        no_exclaimations = message.content.replace('!', '')
-        command = extract_message(no_exclaimations, client.user.mention)
-
+        command = message.content
+        if client.user in message.mentions:
+            no_exclaimations = message.content.replace('!', '')
+            command = extract_message(no_exclaimations, client.user.mention)
         firework = firework_parsing.parse_firework(command)
         if firework is None:
             print(f'Unrecognised command: {command}', file=sys.stderr)
