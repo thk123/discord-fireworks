@@ -21,13 +21,6 @@ win.on_resize = on_resize
 
 yrot = 0.0
 
-
-@win.event
-def on_mouse_motion(x, y, dx, dy):
-    global yrot
-    yrot += dx * 0.3
-
-
 glEnable(GL_BLEND)
 glShadeModel(GL_SMOOTH)
 glBlendFunc(GL_SRC_ALPHA, GL_ONE)
