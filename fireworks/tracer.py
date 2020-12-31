@@ -5,6 +5,7 @@ import pyglet
 from lepton import Particle
 from lepton.emitter import StaticEmitter
 from lepton.group import ParticleGroup
+from lepton.particle_struct import Vec3
 from lepton.renderer import BillboardRenderer
 from lepton.texturizer import SpriteTexturizer
 from pyglet import image
@@ -44,7 +45,7 @@ class Tracer:
     def tick(self, dt):
         self.time_to_explode -= dt
         if self.time_to_explode <= 0.0:
-            Kaboom()
+            Kaboom(Vec3(self.comet.template.position.x, self.comet.template.position.y, self.comet.template.position.z))
             pyglet.clock.unschedule(self.tick)
         else:
             vel = 80
