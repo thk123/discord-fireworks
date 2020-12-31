@@ -14,8 +14,12 @@ if __name__ == '__main__':
         if val == "quit":
             pyglet.app.exit()
         else:
-            firework = firework_parsing.parse_firework(val)
-            if firework is None:
-                print(f'Unrecognised command: {val}', file=sys.stderr)
+            try:
+                firework = firework_parsing.parse_firework(val)
+                if firework is None:
+                    print(f'Unrecognised command: {val}', file=sys.stderr)
+                    continue
+                pyglet.clock.schedule_once(firework, 0)
+            except:
+                print(f'Parsing error: {val}', file=sys.stderr)
                 continue
-            pyglet.clock.schedule_once(firework, 0)

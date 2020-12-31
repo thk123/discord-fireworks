@@ -84,3 +84,7 @@ def fire(dt=None):
 
 def fire_one(dt=None):
     Kaboom()
+
+def fire_N(num_times, dt):
+    for i in range(num_times):
+        Kaboom()

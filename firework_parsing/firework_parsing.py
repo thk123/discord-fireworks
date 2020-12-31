@@ -12,8 +12,9 @@ def parse_firework(firework_command):
 
     if firework_command == 'continuous_firework':
         return basic_firework.fire
-    elif firework_command == 'firework':
-        return basic_firework.fire_one
+    elif bits[0] == 'firework':
+        num_times = int(bits[1]) if len(bits)>1 else 1
+        return lambda dt: basic_firework.fire_N(num_times, dt)
     elif bits[0] == 'text':
         return lambda dt: text_firework.fire(" ".join(bits[1:]))
     else:
