@@ -1,5 +1,4 @@
-from fireworks import basic_firework, text_firework, tracer
-
+from fireworks import basic_firework, text_firework, tracer, sphere_firework
 
 def parse_firework(firework_command):
     """
@@ -26,15 +25,12 @@ def parse_firework(firework_command):
 
     if firework_command == 'continuous_firework':
         return basic_firework.fire
-    elif func_name == 'firework':
-        basic_func = basic_firework.fire_one
-    elif func_name == 'text':
-        basic_func = lambda dt: text_firework.fire(" ".join(bits))
 
-    elif func_name == 'rocket':
-        basic_func = tracer.rocket
-    else:
-        basic_func = None
+    basic_func = {'firework': basic_firework.fire_one,
+                  'text':     lambda dt: text_firework.fire(" ".join(bits)),
+                  'rocket':   tracer.rocket,
+                  'sphere':   sphere_firework.fire,
+            }.get(func_name)
 
     if basic_func:
         return lambda dt: repeat(basic_func, n, dt)
