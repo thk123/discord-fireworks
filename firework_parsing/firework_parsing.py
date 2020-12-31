@@ -8,7 +8,7 @@ def parse_firework(firework_command):
     :return: A firework to display
     """
 
-    bits = firework_command.split()
+    bits = firework_command.strip().split()
 
     basic_func = None
 
@@ -22,7 +22,7 @@ def parse_firework(firework_command):
         n = 1
         func_name = bits[0]
         bits = bits[1:]
-
+    func_name = func_name.lower()
 
     if firework_command == 'continuous_firework':
         return basic_firework.fire
