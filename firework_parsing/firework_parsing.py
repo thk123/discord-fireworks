@@ -12,23 +12,31 @@ def parse_firework(firework_command):
 
     basic_func = None
 
+    n = None
+    func_name = None
+    try:
+        n = int(bits[0])
+        func_name = bits[1]
+        bits = bits[2:]
+    except:
+        n = 1
+        func_name = bits[0]
+        bits = bits[1:]
+
+
     if firework_command == 'continuous_firework':
         return basic_firework.fire
-    elif bits[0] == 'firework':
+    elif func_name == 'firework':
         basic_func = basic_firework.fire_one
-    elif bits[0] == 'text':
-        basic_func = lambda dt: text_firework.fire(" ".join(bits[1:]))
-    elif bits[0] == 'rocket':
+    elif func_name == 'text':
+        basic_func = lambda dt: text_firework.fire(" ".join(bits))
+
+    elif func_name == 'rocket':
         basic_func = tracer.rocket
     else:
         basic_func = None
 
     if basic_func:
-        n = 1
-        try:
-            n = int(bits[-1]) if len(bits)>1 else 1
-        except:
-            pass
         return lambda dt: repeat(basic_func, n, dt)
 
 def repeat(fn, N, dt):
