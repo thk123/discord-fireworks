@@ -17,7 +17,7 @@ def parse_firework(firework_command):
         return lambda dt: basic_firework.fire_N(num_times, dt)
     elif bits[0] == 'text':
         return lambda dt: text_firework.fire(" ".join(bits[1:]))
-    elif bits[0] == 'tracer':
-        return tracer.run_tracer
+    elif bits[0] == 'rocket':
+        return tracer.rocket
     else:
         return None

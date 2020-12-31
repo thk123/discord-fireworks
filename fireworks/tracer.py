@@ -56,5 +56,5 @@ class Tracer:
             self.comet.template.position.z += self.starting_velocity.z * dt
 
 
-def run_tracer(dt):
+def rocket(dt):
     comet = Tracer()
