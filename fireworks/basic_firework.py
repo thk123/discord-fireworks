@@ -16,14 +16,14 @@ trail_texturizer = SpriteTexturizer(create_point_texture(8, 50))
 class Kaboom:
     lifetime = 5
 
-    def __init__(self):
+    def __init__(self, pos=None):
         color = (uniform(0, 1), uniform(0, 1), uniform(0, 1), 1)
         while max(color[:3]) < 0.9:
             color = (uniform(0, 1), uniform(0, 1), uniform(0, 1), 1)
-
+        pos = pos if pos else (uniform(-50, 50), uniform(-30, 30), uniform(-30, 30))
         spark_emitter = StaticEmitter(
             template=Particle(
-                position=(uniform(-50, 50), uniform(-30, 30), uniform(-30, 30)),
+                position=pos,
                 color=color),
             deviation=Particle(
                 velocity=(gauss(0, 5), gauss(0, 5), gauss(0, 5)),

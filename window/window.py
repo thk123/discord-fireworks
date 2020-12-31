@@ -1,6 +1,6 @@
 import pyglet
 from lepton import default_system
-from lepton._controller import Gravity
+from lepton._controller import Gravity, Lifetime, Movement, Fader
 from pyglet.gl import *
 
 win = pyglet.window.Window(resizable=True, visible=False)
@@ -37,7 +37,11 @@ glDisable(GL_DEPTH_TEST)
 default_system.add_global_controller(
     Gravity((0, -15, 0))
 )
-
+default_system.add_global_controller(
+	Lifetime(3.0),
+	Movement(min_velocity=5),
+	Fader(max_alpha=0.7, fade_out_start=1, fade_out_end=3.0),
+)
 
 def run(firework):
     win.set_visible(True)
